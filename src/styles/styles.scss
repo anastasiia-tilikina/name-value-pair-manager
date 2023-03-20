@@ -1,0 +1,173 @@
+@import "./normalize.scss";
+@import "./mixins.scss";
+@import "./extends.scss";
+@import "./vars.scss";
+
+.page-title {
+  @extend %container;
+  margin: 20px auto;
+
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 24px;
+
+  @include onTablet {
+    font-size: 26px;
+    line-height: 30px;
+  }
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+
+  @extend %container;
+  margin-bottom: 30px;
+
+  &__section {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    justify-content: space-between;
+    gap: 30px;
+
+    &--2 {
+      @include onMobile {
+        grid-template-columns: 1fr;
+      }
+    }
+  }
+
+  &__section-title {
+    margin-bottom: 5px;
+
+    font-size: inherit;
+    font-weight: inherit;
+    color: $color-gray-2;
+  }
+}
+
+.from {
+  &__input-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  &__input {
+    height: $element-height;
+    padding: 5px;
+
+    @include border($color-gray-1);
+
+    &--error {
+      border-color: $color-red;
+    }
+
+    &:focus {
+      border-width: 2px;
+    }
+
+    &::placeholder {
+      color: $color-gray-3;
+    }
+  }
+
+  &__error-message {
+    visibility: hidden;
+    font-size: 10px;
+    line-height: 12px;
+    color: $color-red;
+
+    &--shown {
+      visibility: visible;
+    }
+  }
+}
+
+.list {
+  min-height: 100px;
+  padding: 10px;
+
+  @include border($color-gray-1);
+
+  @include onTablet {
+    min-height: 200px;
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 12px;
+
+    &:not(:last-child) {
+      margin-bottom: 10px;
+    }
+  }
+
+  &__item-checkbox {
+    width: 20px;
+    height: 20px;
+  }
+
+  &__item-pair {
+    width: 100%;
+    padding: 3px 5px;
+    @include border(transparent);
+  }
+
+  &__item-checkbox:checked + &__item-pair {
+    background-color: $color-gray-3;
+    border-color: $color-gray-3;
+  }
+}
+
+.buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.button {
+  height: $element-height;
+
+  background-color: $color-gray-3;
+  @include border($color-gray-2);
+
+  transition: all 0.2s linear;
+
+  &:hover {
+    color: rgb(255, 255, 255);
+    background-color: $color-gray-2;
+  }
+}
+
+.xml {
+  display: none;
+  padding: 15px;
+  font-family: monospace, serif;
+  font-size: 10px;
+
+  @include border($color-gray-1);
+
+  @include onTablet {
+    font-size: 12px;
+  }
+
+  &--shown {
+    display: block;
+  }
+
+  &__container {
+    padding-left: 20px;
+  }
+
+  &__tag {
+    color: purple;
+  }
+
+  &__bracket {
+    color: $color-gray-2;
+  }
+}
